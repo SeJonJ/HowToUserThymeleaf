@@ -92,7 +92,38 @@ public class thymeleafBasicController {
         model.addAttribute("nulldata", null);
         model.addAttribute("data", "spring");
 
-        return "/basic/oeration";
+        return "/basic/operation";
+    }
+
+    @GetMapping("/attribute")
+    public String attribute(Model model){
+        return "/basic/attribute";
+    }
+
+    @GetMapping("/each")
+    public String each(Model model){
+        this.addCharacters(model);
+
+        return "/basic/each";
+    }
+
+    @GetMapping("/condition")
+    public String con(Model model) {
+        this.addCharacters(model);
+
+        return "/basic/condition";
+    }
+
+    @GetMapping("/comments")
+    public String comm(Model model) {
+        model.addAttribute("data", "프로토 타입 주석");
+        return "/basic/comments";
+    }
+
+    @GetMapping("/block")
+    public String block(Model model) {
+        this.addCharacters(model);
+        return "/basic/block";
     }
 
     @Component("springBean")
@@ -112,6 +143,16 @@ public class thymeleafBasicController {
             this.age = age;
         }
 
+    }
+
+    private void addCharacters(Model model) {
+        ArrayList<User> list = new ArrayList<>();
+
+        list.add(new User("케리건", 20));
+        list.add(new User("레이너", 25));
+        list.add(new User("제라툴", 1000));
+
+        model.addAttribute("characters", list);
     }
 
 }

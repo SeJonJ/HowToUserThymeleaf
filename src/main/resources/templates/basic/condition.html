@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>if, unless</h1>
+<h2>조건문은 if, switch 모두 동일하게 조건에 맞지 않는 경우 태그 자체가 랜더링 되지 않고 사라진다</h2>
+<h3>if : th:if="${조건식}" 을 사용한다</h3>
+<h3>
+  switch : th:switch="${조건변수}"
+  th:case="조건" : 해당 조건에 맞게 태그 내용 출력
+  th:case="*" : 어떤 조건에도 맞지 않는 경우 => 기타 내용 출력
+</h3>
+<table border="1">
+  <tr>
+    <th>count</th>
+    <th>username</th>
+    <th>age</th>
+  </tr>
+  <tr th:each="user, userStat : ${characters}">
+    <td th:text="${userStat.count}"></td>
+    <td th:text="${user.username}">username</td>
+    <td>
+      <span th:text="${user.age}">0</span>
+      <span th:text="'100보다 작거나 같다'" th:if="${user.age lt 100}"></span>
+      <span th:text="'100보다 크거나 같지 않다'" th:unless="${user.age ge 100}"></span>
+    </td>
+  </tr>
+</table>
+<h1>switch</h1>
+<table border="1">
+  <tr>
+    <th>count</th>
+    <th>username</th>
+    <th>age</th>
+  </tr>
+  <tr th:each="user, userStat : ${characters}">
+    <td th:text="${userStat.count}">1</td>
+    <td th:text="${user.username}">username</td>
+    <td th:switch="${user.age}">
+      <span th:case="20">[[${user.username}]]</span>
+      <span th:case="1000">[[${user.username}]]</span>
+      <span th:case="*">[[${user.username}]]</span>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
