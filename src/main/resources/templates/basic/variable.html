@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>SpringEL 표현식</h1>
+<ul>Object : attributeName.변수명, ['변수명'], .getter메서드
+    <li>${user.username} = <span th:text="${user.username}"></span></li>
+    <li>${user['username']} = <span th:text="${user['username']}"></span></li>
+    <li>${user.getUsername()} = <span th:text="${user.getUsername()}"></span></li>
+</ul>
+<ul>List : list[인덱스].변수명, ['변수명'], .getter메서드
+    <li>${users[0].username} = <span th:text="${list[0].username}"></span>
+    </li>
+    <li>${users[0]['username']} = <span th:text="${list[0]['username']}"></span>
+    </li>
+    <li>${users[0].getUsername()} = <span th:text="${list[0].getUsername()}"></span></li>
+</ul>
+<ul>Map : map['key'].변수명, ['변수명'], .getter메서드
+    <li>${userMap['레이너'].username} = <span th:text="${map['레이너'].username}"></span></li>
+    <li>${userMap['레이너']['username']} = <span th:text="${map['레이너']['username']}"></span></li>
+    <li>${userMap['레이너'].getUsername()} = <span th:text="${map['레이너'].getUsername()}"></span></li>
+</ul>
+<h1>지역 변수 - (th:with)</h1>
+<div th:with="var=${list[1]}">
+    <p>두번째 사람의 이름은 <span th:text="${list[1].username}"></span></p>
+</div>
+</body>
+</html>
