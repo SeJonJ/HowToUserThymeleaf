@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template/layout/baselayout :: common_header(~{::title},~{::link})">
+    <title>넘어가서 replace 되는 타이틀</title>
+    <link rel="stylesheet" th:href="@{/css/넘어가서 replace 되는 링크1}">
+    <link rel="stylesheet" th:href="@{/themes/넘어가서 replace 되는 링크2}">
+</head>
+<body>
+메인 컨텐츠
+<div th:insert="template/layout/baselayout :: insert_body('추가되는 내용')"></div>
+<div th:replace="template/layout/baselayout :: replace_body('대체되는 내용')">
+    원본 내용~~~~!!!!
+</div>
+</body>
+</html>

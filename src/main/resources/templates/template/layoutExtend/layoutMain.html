@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html th:replace="~{template/layoutExtend/layout :: layout(~{::title}, ~{::section})}"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>layout으로 넘어가는 타이틀</title>
+</head>
+<body>
+<section>
+<h3>레이아웃 기능을 잘 사용하면 html 전체를 혹은 body 전체를 replace 가능하다</h3>
+<h3>특히 각페이지의 동일한 부분은 그대로 살리고, 다른 부분만 변경하고 싶을 때 편리하다</h3>
+<h3>아래의 section 부분과 위쪽의 title 부분이 넘어가서 title 과 아래의 section 부분만 레이아웃 폼에 맞게 변경된다</h3>
+    <ul>
+        <li>각 페이지에 맞게 변경되는 부분1</li>
+        <li>각 페이지에 맞게 변경되는 부분2</li>
+    </ul>
+</section>
+</body>
+</html>

@@ -126,6 +126,13 @@ public class thymeleafBasicController {
         return "/basic/block";
     }
 
+    @GetMapping("/javascript")
+    public String javascript(Model model) {
+        model.addAttribute("user", new User("노바", 28));
+        this.addCharacters(model);
+        return "/basic/javascript";
+    }
+
     @Component("springBean")
     static class springBean {
         public String Bean(String data) {
